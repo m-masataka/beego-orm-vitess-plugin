@@ -20,6 +20,7 @@ import (
 	"reflect"
 	"sync"
 	"time"
+	"strings"
 
 	"github.com/youtube/vitess/go/vt/vitessdriver"
 )
@@ -173,7 +174,9 @@ func RegisterDataBase(aliasName, driverName, dataSource string, params ...int) e
 		db  *sql.DB
 		al  *alias
 	)
-	db, err = vitessdriver.Open("localhost:15991","@master",10 * time.Second)
+
+	host := strings.SplitN(dataSource, "@", 2)
+	db, err = vitessdriver.Open(host[0], "@"+host[1], time.Duration(params[0]) * time.Second)
 	if err != nil {
 		err = fmt.Errorf("register db `%s`, %s", aliasName, err.Error())
 		goto end
