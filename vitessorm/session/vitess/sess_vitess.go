@@ -1,3 +1,17 @@
+package vitess
+
+import (
+        "database/sql"
+        "net/http"
+        "sync"
+        "time"
+
+        "github.com/harbor/src/common/utils/vitessorm/session"
+        // import mysql driver
+        //_ "github.com/go-sql-driver/mysql"
+	"github.com/youtube/vitess/go/vt/vitessdriver"
+)
+
 type SessionStore struct {
 	c      *sql.DB
 	sid    string
