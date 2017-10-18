@@ -6,9 +6,7 @@ import (
         "sync"
         "time"
 
-        "github.com/harbor/src/common/utils/vitessorm/session"
-        // import mysql driver
-        //_ "github.com/go-sql-driver/mysql"
+        "github.com/m-masataka/beego-orm-vitess-plugin/vitessorm/session"
 	"github.com/youtube/vitess/go/vt/vitessdriver"
 )
 
